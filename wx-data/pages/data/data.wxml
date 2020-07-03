@@ -1,0 +1,74 @@
+<!--pages/data/data.wxml-->
+<view class="data">
+	<view>
+		<text class="tit">基本的数据绑定</text>
+		<view>{{msg}}</view>
+		<view>{{num}}</view>
+		<button type="primary" bindtap="changeMsg">改变数据</button>
+		<navigator url="/pages/index/index">跳转</navigator>
+		<navigator url="/pages/index/index?name=小明&age=18">===跳转到首页===</navigator>
+		<view>
+			<text>{{bool ? (num+100) : 20000}}</text>
+			<text>{{obj.name + ":" + obj.age}}</text>
+		</view>
+		<view>
+			{{list[2]}}
+		</view>
+		<view>
+			<view>点击按钮，修改list中的值</view>
+			<view wx:for="{{list}}" wx:key="index">{{item}}</view>
+		</view>
+	</view>
+	<view>
+		<text class="tit">列表渲染-基本用法</text>
+		<view class="list">
+			<view class="item" wx:for="{{students}}" wx:key="id">
+				<text>{{item.name + ":" + item.age + ":" + index}}</text>
+			</view>
+		</view>
+	</view>
+	<view>
+		<text class="tit">列表渲染-指定列表渲染的默认索引和项的变量值</text>
+		<view class="list">
+			<view class="item" wx:for="{{students}}" wx:key="id" wx:for-index="i" wx:for-item="it">
+				<text>{{it.name + ":" + it.age + ":" + i}}</text>
+			</view>
+		</view>
+	</view>
+	<view>
+		<view class="tit">block</view>
+		<block>
+			<view class="block">111</view>
+		</block>
+	</view>
+	<view>
+		<view class="tit">条件渲染---wx:if wx:else wx:elif </view>
+		<view>
+			<text wx:if="{{bool}}">124</text>
+			<text wx:else>88888</text>
+		</view>
+	</view>
+	<view>
+		<view class="tit">条件渲染 wx:elif示例 </view>
+		<view class="user">
+			<view class="item" wx:for="{{users}}" wx:key="age">
+				<text>{{item.name + ":" + item.age}}是 </text>
+				<!-- 根据年龄做条件渲染 -->
+				<block wx:if="{{item.age<14}}">
+					<text style="color:red">*</text><text>儿童</text>
+				</block>
+				<text wx:elif="{{item.age<18}}">未成年</text>
+				<text wx:else>成年人</text>
+			</view>
+		</view>
+	</view>
+	<view>
+		<text class="tit">hidden用法</text>
+		<view hidden="{{true}}">{{msg}}</view>
+	</view>
+	<view>
+		<text class="tit">事件处理</text>
+		<view bindtap="handlerMsg">{{msg}}</view>
+	</view>
+ 
+</view>

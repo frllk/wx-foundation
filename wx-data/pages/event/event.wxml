@@ -1,0 +1,36 @@
+<!--pages/event/event.wxml-->
+<view class="box">
+	<view>
+		<text class="tit">事件绑定</text>
+    <!-- 基本绑定 -->
+		<view class="click">
+      <text mark:d1="100" mark:d2="200" bind:tap="handlerClick">点击事件1</text>
+		  <text data-index="123" data-demo="par" bindtap="handlerClick2">点击事件2</text>
+    </view>
+    <!-- 其他事件绑定 -->
+    <view>
+      <input bindinput="inputVal" bind:focus="foc" bindblur="blu" class="inp"></input>
+    </view>
+	</view>
+	<view>
+		<text class="tit">事件冒泡</text>
+    <view bindtap="parent" class="par">
+      <view data-name="child1" bindtap="child" class="child">child1
+        <text bindtap="son">son</text>
+      </view>
+      <view data-name="child2" class="child">
+        child2---事件委托（不需要绑定事件，直接给父组件绑定事件即可）
+      </view>
+    </view>
+	</view>
+	<view>
+		<text class="tit">阻止事件冒泡</text>
+    <view bindtap="parent" class="par">
+      parent
+      <view data-name="child1" catchtap="child"  class="child">child1</view>
+    </view>
+	</view>
+	<view>
+		<text class="tit">事件捕获</text>
+	</view>
+</view>
